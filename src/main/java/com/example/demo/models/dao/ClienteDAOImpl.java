@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.models.entity.Cliente;
 
-@Repository
+@Repository("interfaceClienteDAO_HIBERNATE")
 public class ClienteDAOImpl implements InterfaceClienteDAO {
 
 	@PersistenceContext
