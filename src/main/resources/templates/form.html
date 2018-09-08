@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title th:title="${titulo}"></title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+	<h1 th:title="${titulo}"></h1>
+
+	<div class="container">
+		<form class="form" th:action="@{/form}" th:object="${cliente}" method="post">
+
+			<fieldset>
+				<input placeholder="nombre" type="text" tabindex="1" required th:field="*{nombre}" autofocus />
+			</fieldset>
+			<fieldset>
+				<input placeholder="apellido" type="text" tabindex="2" required th:field="*{apellido}" />
+			</fieldset>
+			<fieldset>
+				<input placeholder="Email" type="email" tabindex="3" th:field="*{email}" required />
+			</fieldset>
+				<input type="hidden" th:field="*{id}" />
+			<fieldset>
+				<button name="submit" type="submit" id="contact-submit"
+					data-submit="Almacenando...">Almacenar</button>
+			</fieldset>
+		</form>
+	</div>
+
+</body>
+</html>

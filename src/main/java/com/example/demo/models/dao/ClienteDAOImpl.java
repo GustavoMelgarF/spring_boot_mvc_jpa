@@ -20,8 +20,14 @@ public class ClienteDAOImpl implements InterfaceClienteDAO {
 	@Transactional(readOnly=true)
 	@Override
 	public List<Cliente> obtenerListaClientes() {
-		// TODO Auto-generated method stub
 		return entityManager.createQuery("from Cliente").getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void Guardar(Cliente cliente) {
+		entityManager.persist(cliente);
+		
 	}
 
 }

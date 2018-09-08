@@ -1,12 +1,16 @@
 package com.example.demo.models.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.models.dao.InterfaceClienteDAO;
+import com.example.demo.models.entity.Cliente;
 
 @Controller
 public class ClienteController {
@@ -30,6 +34,23 @@ public class ClienteController {
 		modelo.addAttribute("titulo", "Título");
 		modelo.addAttribute("clientes", iCD.obtenerListaClientes());
 		return "listar";
+	}
+	
+	@GetMapping(value="/form")
+	public String crearObjeto(Map<String, Object> modelo) {
+		
+		Cliente cliente= new Cliente();
+		modelo.put("cliente",  cliente);
+		modelo.put("titulo", "formCliente");
+		
+		return "form"; 
+		
+	}
+	
+	@PostMapping(value="/form")
+	public String almacenarObjeto(Cliente cliente) {
+		iCD.Guardar(cliente);
+		return "redirect:listado";
 	}
 }
  
